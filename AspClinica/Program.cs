@@ -1,4 +1,6 @@
 using AspClinica.Context;
+using AspClinica.Repositories;
+using AspClinica.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddTransient<IAdministradorRepository, AdministradorRepository>();
+builder.Services.AddTransient<IPsicologoRepository, PsicologoRepository>();
+builder.Services.AddTransient<IPacienteRepository, PacienteRepository>();
+builder.Services.AddTransient<IConsultaRepository, ConsultaRepository>();
 
 var app = builder.Build();
 
