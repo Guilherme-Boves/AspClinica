@@ -66,6 +66,7 @@ namespace AspClinica.Controllers
                 if (result.Succeeded)
                 {
                     //await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _userManager.AddToRoleAsync(user, registroVM.Role);
                     return RedirectToAction("Login", "Account");
                 } 
                 else
@@ -87,5 +88,9 @@ namespace AspClinica.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
