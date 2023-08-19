@@ -15,6 +15,6 @@ namespace AspClinica.Repositories
 
         public IEnumerable<Consulta> Consultas => _context.Consultas;
 
-        public Consulta GetConsultaById(int consultaId) => _context.Consultas.FirstOrDefault(c => c.ConsultaId == consultaId);
+        public Consulta GetConsultaById(string consultaId) => _context.Consultas.FirstOrDefault(c => c.ConsultaId == consultaId);
     }
 }

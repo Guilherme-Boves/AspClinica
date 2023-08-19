@@ -6,6 +6,6 @@ namespace AspClinica.Repositories.Interfaces
     {
         IEnumerable<Consulta> Consultas { get; }
 
-        Consulta GetConsultaById(int consultaId);
+        Consulta GetConsultaById(string consultaId);
     }
 }
