@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AspClinica.Areas.Admin.Controllers
+namespace AspClinica.Areas.Recepcao.Controllers
 {
-    [Area("Admin")]
-    [Authorize("Admin")]
-    public class AdminRecepcionistasController : Controller
+    [Area("Recepcao")]
+    [Authorize("Recepcao")]
+    public class RecepcaoController : Controller
     {
         public IActionResult Index()
         {

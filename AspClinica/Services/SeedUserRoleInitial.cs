@@ -21,7 +21,14 @@ namespace AspClinica.Services
                 role.Name = "Admin";
                 role.NormalizedName = "ADMIN";
                 IdentityResult roleResult = _roleManager.CreateAsync(role).Result;
-            }            
+            }
+            if (!_roleManager.RoleExistsAsync("Recepcao").Result)
+            {
+                IdentityRole role = new IdentityRole();
+                role.Name = "Recepcao";
+                role.NormalizedName = "RECEPCAO";
+                IdentityResult roleResult = _roleManager.CreateAsync(role).Result;
+            }
             if (!_roleManager.RoleExistsAsync("Psicologo").Result)
             {
                 IdentityRole role = new IdentityRole();
@@ -56,6 +63,24 @@ namespace AspClinica.Services
                 if (result.Succeeded)
                 {
                     _userManager.AddToRoleAsync(user, "Admin").Wait();
+                }
+            }
+            if (_userManager.FindByEmailAsync("recepcao@localhost").Result == null)
+            {
+                IdentityUser user = new IdentityUser();
+                user.UserName = "recepcao@localhost";
+                user.Email = "recepcao@localhost";
+                user.NormalizedUserName = "RECEPCAO@LOCALHOST";
+                user.NormalizedEmail = "RECEPCAO@LOCALHOST";
+                user.EmailConfirmed = true;
+                user.LockoutEnabled = false;
+                user.SecurityStamp = Guid.NewGuid().ToString();
+
+                IdentityResult result = _userManager.CreateAsync(user, "Teste123@").Result;
+
+                if (result.Succeeded)
+                {
+                    _userManager.AddToRoleAsync(user, "Recepcao").Wait();
                 }
             }
             if (_userManager.FindByEmailAsync("paciente@localhost").Result == null)

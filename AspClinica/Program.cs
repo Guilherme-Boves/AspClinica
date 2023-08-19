@@ -35,6 +35,16 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddAuthorization(options =>
 {
+    options.AddPolicy("Recepcao",
+        politica =>
+        {
+            politica.RequireRole("Recepcao");
+        });
+});
+
+
+builder.Services.AddAuthorization(options =>
+{
     options.AddPolicy("Psicologo",
         politica =>
         {
@@ -84,6 +94,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
      name: "areas",
      pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Recepcao}/{action=Index}/{id?}");
 
 app.MapControllerRoute(    
       name: "areas",

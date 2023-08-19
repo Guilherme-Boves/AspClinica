@@ -22,26 +22,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Admin" asp-action="Index">Área do Admin</a>
-                        }
-                        @if (User.IsInRole("Recepcao"))
-                        {
-                            <a class="nav-link text-dark" asp-area="Recepcao" asp-controller="Recepcao" asp-action="Index">Área da Recepção</a>
-                        }
-                        @if (User.IsInRole("Psicologo"))
-                        {
-                            <a class="nav-link text-dark" asp-area="Psicologo" asp-controller="Psicologo" asp-action="Index">Área do Psicologo</a>
-                        }
-                        @if (User.IsInRole("Paciente"))
-                        {
-                                <a class="nav-link text-dark" asp-area="Paciente" asp-controller="Paciente" asp-action="Index">Área do Paciente</a>
-                        }
-                        @await Html.PartialAsync("_LoginPartial")                       
+                        @await Html.PartialAsync("_LoginPartial")
                     </ul>
                 </div>
             </div>
